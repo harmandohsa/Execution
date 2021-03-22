@@ -1,0 +1,207 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteVideoTutoriales.master.cs" Inherits="Execution.MasterPage.SiteVideoTutoriales" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Execution - Videotutoriales">
+	<meta name="author" content="Ansonika">
+	<title>Execution</title>
+
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+	<!-- GOOGLE WEB FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700|Kalam:400,700" rel="stylesheet">
+
+	<!-- BASE CSS -->
+	<link href="../css/animate.min.css" rel="stylesheet">
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/menu.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/responsive.css" rel="stylesheet">
+	<link href="../css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
+	<link href="../css/magnific-popup.min.css" rel="stylesheet">
+    <link href="../js/toastr/build/toastr.css" rel="stylesheet" type="text/css" />
+    <link href="../js/select2/dist/css/select2.css" rel="stylesheet" type="text/css" />
+    <link href="../js/sweetalert2/dist/sweetalert2.css" rel="stylesheet" type="text/css" />
+    <link href="../css/blog.css" rel="stylesheet">
+
+	<!-- YOUR CUSTOM CSS -->
+	<link href="../css/custom.css" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="../layerslider/css/layerslider.css" rel="stylesheet">
+
+	<!-- Modernizr -->
+	<script src="../js/modernizr.js"></script>
+</head>
+
+<body>
+
+	<div class="layer"></div>
+	<!-- Mobile menu overlay mask -->
+
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div>
+	<!-- End Preload -->
+
+	<!-- Header ================================================== -->
+	<header>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-3">
+					<a href="http://www.pcasa.com/" id="logo" target="_blank">
+						<img src="../img/logob.png">
+					</a>
+				</div>
+                <nav class="col-xs-9">
+					<ul id="access_top">
+						
+						<li><a href="" onclick="Salir()" class="hidden-xs">Salir</a>
+						</li>
+					</ul>
+					<a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+					<div class="main-menu">
+						<div id="header_menu">
+							<img src="img/logob.png" width="95" height="27" alt="Lovefit" data-retina="true">
+						</div>
+						<a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+						<ul>
+							<li><a href="" onclick="Salir()" class="visible-xs">Salir</a>
+							</li>
+							
+						</ul>
+					</div>
+					<!-- End main-menu -->
+				</nav>
+			</div>
+			<!-- End row -->
+		</div>
+		<!-- End container -->
+	</header>
+	<!-- End Header =============================================== -->
+	<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+	<footer>
+		<div class="container">
+			<div class="row ">
+				<div class="col-md-3 col-sm-12">
+					<p>
+						<img src="../img/logo.png" width="95" height="27" alt="Execution" data-retina="true">
+					</p>
+					<div id="social">
+						<ul>
+							<li><a href="https://www.facebook.com/PCA-Innovation-116330900165537" target="_blank"><i class="icon-facebook"></i></a>
+							</li>
+							<li><a href="#"><i class="icon-twitter"></i></a>
+							</li>
+							<li><a href="#"><i class="icon-google"></i></a>
+							</li>
+							<li><a href="https://www.linkedin.com/company/pca-profesionales-consultores-asociados/" target="_blank"><i class="icon-linkedin"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<%--<div class="col-md-3 col-sm-6">
+					<h4>About</h4>
+					<ul>
+						<li><a href="#">About us</a>
+						</li>
+						<li><a href="#">Blog</a>
+						</li>
+						<li><a href="#">Login</a>
+						</li>
+						<li><a href="#">Register</a>
+						</li>
+						<li><a href="#">Contact us</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<h4>Discover</h4>
+					<ul>
+						<li><a href="#">Explore</a>
+						</li>
+						<li><a href="#">Terms and condition</a>
+						</li>
+						<li><a href="#">Privacy</a>
+						</li>
+						<li><a href="#">Cookie Policy</a>
+						</li>
+						<li><a href="#">Faq</a>
+						</li>
+					</ul>
+				</div>--%>
+				<div class="col-md-3 hidden-sm hidden-xs">
+					<%--<img src="img/footer_img.png" width="257" height="302" alt="Image" class="footer_pic">--%>
+				</div>
+			</div>
+			<!-- End row -->
+		</div>
+		<!-- End container -->
+	</footer>
+	<!-- End footer -->
+	<div id="copy">
+		<div class="container">
+			© Execution 2021.
+		</div>
+	</div>
+	<!-- End copy -->
+
+	<div id="toTop"></div>
+	<!-- Back to top button -->
+
+	<!-- Login modal -->
+	
+	<!-- End Search Menu -->
+
+	<!-- COMMON SCRIPTS -->
+	<script src="../js/jquery-2.2.4.min.js"></script>
+	<script src="../js/common_scripts_min.js"></script>
+	<script src="../assets/validate.js"></script>
+	<script src="../js/functions.js"></script>
+<%--    <script src="http://code.jquery.com/jquery-1.11.3.min.js" charset="utf-8"></script>--%>
+    <script src="../js/rater.js" charset="utf-8"></script>
+    <script src="../js/block-ui/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="../js/toastr/build/toastr.min.js" type="text/javascript"></script>
+    <script src="../js/select2/dist/js/select2.full.js" type="text/javascript"></script>
+    <script src="../js/sweetalert2/dist/sweetalert2.min.js" type="text/javascript"></script>
+    <script src="../js/sweetalert2.init.js" type="text/javascript"></script>
+    <script src="../js/js-cookie/src/js.cookie.js" type="text/javascript"></script>
+    <script src="../WebScripts/SrcGenerales.js"></script>
+    <script src="../WebScripts/SrcCombos.js"></script>
+    
+
+
+	<!-- SPECIFIC SCRIPTS -->
+    <script src="../js/bootstrap-portfilter.min.js"></script>
+    <script src="../layerslider/js/greensock.js"></script>
+    <script src="../layerslider/js/layerslider.transitions.js"></script>
+    <script src="../layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+    <script type="text/javascript">
+        'use strict';
+        $('#layerslider').layerSlider({
+            autoStart: true,
+            navButtons: false,
+            navStartStop: false,
+            showCircleTimer: false,
+            responsive: true,
+            responsiveUnder: 1400,
+            layersContainer: 1170,
+            skinsPath: 'layerslider/skins/'
+                // Please make sure that you didn't forget to add a comma to the line endings
+                // except the last line!
+        });
+    </script>
+
+</body>
+</html>

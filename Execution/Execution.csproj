@@ -179,6 +179,8 @@
     <Content Include="img\blog-3.jpg" />
     <Content Include="img\cards.png" />
     <Content Include="img\check_radio_sheet.png" />
+    <Content Include="img\close.png" />
+    <Content Include="img\comentario.jpg" />
     <Content Include="img\course_1.jpg" />
     <Content Include="img\course_2.jpg" />
     <Content Include="img\course_3.jpg" />
@@ -208,6 +210,7 @@
     <Content Include="img\icon_2.svg" />
     <Content Include="img\icon_3.svg" />
     <Content Include="img\icon_ccv.gif" />
+    <Content Include="img\like.jpg" />
     <Content Include="img\loader.gif" />
     <Content Include="img\logo.png" />
     <Content Include="img\logo_2x.png" />
@@ -447,8 +450,11 @@
     <Content Include="WebScripts\SrcCombos.js" />
     <Content Include="WebScripts\SrcGenerales.js" />
     <Content Include="WebScripts\SrcInicio.js" />
+    <Content Include="WebScripts\SrcVideos.js" />
+    <Content Include="WebScripts\SrcVideosModulo.js" />
     <Content Include="WebServices\Ws_Empresa.asmx" />
     <Content Include="WebServices\Ws_Generales.asmx" />
+    <Content Include="WebServices\Ws_Login.asmx" />
     <Content Include="WebServices\WS_Usuarios.asmx" />
     <Content Include="js\sweetalert2\CHANGELOG.md" />
     <Content Include="js\sweetalert2\LICENSE" />
@@ -459,6 +465,10 @@
     <Content Include="js\sweetalert2\src\sweetalert2.scss" />
     <Content Include="js\sweetalert2\src\toasts.scss" />
     <Content Include="js\sweetalert2\src\variables.scss" />
+    <Content Include="MasterPage\SiteVideoTutoriales.Master" />
+    <Content Include="WebServices\WS_Videos.asmx" />
+    <Content Include="Web_Forms\Wfrm_InicioVideos.aspx" />
+    <Content Include="Web_Forms\Wfrm_VideosModulo.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -502,6 +512,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Cl_Empresa.cs" />
     <Compile Include="Clases\Cl_Usuarios.cs" />
+    <Compile Include="Clases\Cl_Video.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -519,6 +530,13 @@
     <Compile Include="MasterPage\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="MasterPage\SiteVideoTutoriales.Master.cs">
+      <DependentUpon>SiteVideoTutoriales.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\SiteVideoTutoriales.Master.designer.cs">
+      <DependentUpon>SiteVideoTutoriales.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -535,14 +553,35 @@
       <DependentUpon>Ws_Generales.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebServices\Ws_Login.asmx.cs">
+      <DependentUpon>Ws_Login.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\WS_Usuarios.asmx.cs">
       <DependentUpon>WS_Usuarios.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebServices\WS_Videos.asmx.cs">
+      <DependentUpon>WS_Videos.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\Wfrm_InicioVideos.aspx.cs">
+      <DependentUpon>Wfrm_InicioVideos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\Wfrm_InicioVideos.aspx.designer.cs">
+      <DependentUpon>Wfrm_InicioVideos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\Wfrm_VideosModulo.aspx.cs">
+      <DependentUpon>Wfrm_VideosModulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\Wfrm_VideosModulo.aspx.designer.cs">
+      <DependentUpon>Wfrm_VideosModulo.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Web_Forms\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -70,5 +70,79 @@ namespace Execution.WebServices
             }
         }
 
+
+        [WebMethod]
+        public int ExisteUsuarioClaveEmpresa(string Usuario, string Clave)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_ExisteUsuarioEmpresa", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = Usuario;
+                Comando.Parameters.Add("@Clave", SqlDbType.VarChar).Value = Clave;
+                Comando.Parameters.Add("@Resul", SqlDbType.Int).Direction = ParameterDirection.Output;
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Resul"].Value);
+                cn.Close();
+                return Respuesta;
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        [WebMethod]
+        public string EditClave(int UsuarioId, string Clave, int CambiaClave)
+        {
+            try
+            {
+                Ws_Generales wsGenerales = new Ws_Generales();
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_ChangeClave", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
+                Comando.Parameters.Add("@Clave", SqlDbType.VarChar, 200).Value = wsGenerales.Encrypt(Clave);
+                Comando.Parameters.Add("@CambiaClave", SqlDbType.Int).Value = CambiaClave;
+                Comando.ExecuteNonQuery();
+                cn.Close();
+
+                return "";
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+        [WebMethod]
+        public int ExisteUsuario(string Usuario)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_ExisteUsuarioNew", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Usuario", SqlDbType.VarChar, 200).Value = Usuario.Trim();
+                Comando.Parameters.Add("@Resul", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Resul"].Value);
+                cn.Close();
+
+                return Respuesta;
+            }
+            catch (Exception ex)
+            {
+                string Err = ex.Message;
+                return -1;
+            }
+
+        }
+
     }
 }

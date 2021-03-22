@@ -32,6 +32,8 @@
     <link href="js/toastr/build/toastr.css" rel="stylesheet" type="text/css" />
     <link href="js/select2/dist/css/select2.css" rel="stylesheet" type="text/css" />
     <link href="js/sweetalert2/dist/sweetalert2.css" rel="stylesheet" type="text/css" />
+    <link href="css/blog.css" rel="stylesheet">
+    
 
 	<!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">
@@ -61,89 +63,29 @@
 				</div>
 				<nav class="col-xs-9">
 					<ul id="access_top">
-						<li><a href="#" class="search-overlay-menu-btn"><i class="icon-search-6"></i></a>
-						</li>
+						
 						<li><a href="#" data-toggle="modal" data-target="#login" class="hidden-xs">Video Tutoriales</a>
 						</li>
 						<li><a href="#" data-toggle="modal" data-target="#register" class="hidden-xs">Registro</a>
 						</li>
+                        <li><a href="#" data-toggle="modal" data-target="#forgetpass" class="hidden-xs">¿Olvido su Clave?</a>
+						</li>
 					</ul>
-					<%--<a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+					<a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
 					<div class="main-menu">
 						<div id="header_menu">
-							<img src="img/logo.png" width="95" height="27" alt="Lovefit" data-retina="true">
+							<img src="img/logob.png" width="95" height="27" alt="Lovefit" data-retina="true">
 						</div>
 						<a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
 						<ul>
-							<li><a href="explore-1.html">Explore</a>
+							<li><a href="#" data-toggle="modal" data-target="#login" class="visible-xs">Video Tutoriales</a>
 							</li>
-							<li class="submenu">
-								<a href="javascript:void(0);" class="show-submenu">Pages<i class="icon-down-open-mini"></i></a>
-								<ul>
-									<li><a href="#0">Home versions</a>
-										<ul>
-											<li><a href="index.html">Home Video Bg</a>
-											</li>
-											<li><a href="index_2.html">Home Layer Slider</a>
-											</li>
-											<li><a href="index_3.html">Home Cookie Bar</a>
-											</li>
-											<li><a href="index_4.html">Home Pop Up</a>
-											</li>
-										</ul>
-									</li>
-									<li><a href="fitness-course-1.html">Workout page</a>
-									</li>
-									<li><a href="fitness-course-2.html">Workout page 2</a>
-									</li>
-									<li><a href="about.html">About Us</a>
-									</li>
-									<li><a href="subscribe-working.html">Subscribe working</a>
-									</li>
-									<li><a href="#0">Cart section</a>
-										<ul>
-											<li><a href="cart-page-1.html">Cart section 1</a>
-											</li>
-											<li><a href="cart-page-2.html">Cart section 2</a>
-											</li>
-											<li><a href="cart-page-3.html">Cart section 3</a>
-											</li>
-										</ul>
-									</li>
-									<li><a href="faq.html">Faq</a>
-									</li>
-									<li><a href="blog.html">Blog</a>
-									</li>
-									<li><a href="gallery.html">Gallery</a>
-									</li>
-									<li><a href="trainer-profile.html">Trainer profile</a>
-									</li>
-									<li><a href="contacts.html">Contacts</a>
-									</li>
-								</ul>
+							<li><a href="#" data-toggle="modal" data-target="#register" class="visible-xs">Registro</a>
 							</li>
-							<li><a href="#0">Other elements<i class="icon-down-open-mini"></i></a>
-								<ul>
-									<li><a href="shortcodes.html">Shortcodes</a>
-									</li>
-									<li><a href="pricing-tables.html">Pricing tables</a>
-									</li>
-									<li><a href="coming_soon/index.html">Site launch</a>
-									</li>
-									<li><a href="icon_pack_1.html">Icon pack 1</a>
-									</li>
-									<li><a href="icon_pack_2.html">Icon pack 2</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#0">Purchase this template</a>
-							</li>
-							<li><a href="#" data-toggle="modal" data-target="#login" class="visible-xs">Login</a>
-							</li>
-							<li><a href="#" data-toggle="modal" data-target="#register" class="visible-xs">Register</a>
+                            <li><a href="#" data-toggle="modal" data-target="#forgetpass" class="visible-xs">¿Olvido su Clave?</a>
 							</li>
 						</ul>
-					</div>--%>
+					</div>
 					<!-- End main-menu -->
 				</nav>
 			</div>
@@ -174,7 +116,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-6">
+				<%--<div class="col-md-3 col-sm-6">
 					<h4>About</h4>
 					<ul>
 						<li><a href="#">About us</a>
@@ -203,7 +145,7 @@
 						<li><a href="#">Faq</a>
 						</li>
 					</ul>
-				</div>
+				</div>--%>
 				<div class="col-md-3 hidden-sm hidden-xs">
 					<%--<img src="img/footer_img.png" width="257" height="302" alt="Image" class="footer_pic">--%>
 				</div>
@@ -229,9 +171,9 @@
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
                 <div class="popup-form" id="myLogin">
-                    <input type="text" class="form-control form-white" placeholder="Usuario">
-					<input type="text" class="form-control form-white" placeholder="Clave">
-					<button type="submit" class="btn btn-submit">Ingresar</button>
+                    <input id="TxtUsuarioLog" type="text" class="form-control form-white" placeholder="Usuario">
+					<input id="TxtClaveLog" type="password" class="form-control form-white" placeholder="Clave">
+					<button type="submit" id="BtnLogin" onclick="Ingresar()" class="btn btn-submit">Ingresar</button>
                 </div>
 			</div>
 		</div>
@@ -248,6 +190,17 @@
 					<input id="txtCorreo" type="text" class="form-control form-white" placeholder="Correo Electrónico">
                     <select id="cboEmpresa" class="form-control form-white" data-init-plugin="select2"></select>
 					<button type="submit" onclick="CrearUsuario()" class="btn btn-submit">Crear Usuario</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="modal fade" id="forgetpass" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a  class="close-link"><i class="icon_close_alt2"></i></a>
+				<div  class="popup-form" id="forgetpassinside">
+					<input id="txtUsuarioRecuperar" type="text" class="form-control form-white" placeholder="Usuario">
+					<button type="submit" onclick="EnviarClave()" class="btn btn-submit">Restaurar Clave</button>
 				</div>
 			</div>
 		</div>
@@ -277,6 +230,7 @@
     <script src="js/select2/dist/js/select2.full.js" type="text/javascript"></script>
     <script src="js/sweetalert2/dist/sweetalert2.min.js" type="text/javascript"></script>
     <script src="js/sweetalert2.init.js" type="text/javascript"></script>
+    <script src="js/js-cookie/src/js.cookie.js" type="text/javascript"></script>
     <script src="WebScripts/SrcGenerales.js"></script>
     <script src="WebScripts/SrcCombos.js"></script>
     

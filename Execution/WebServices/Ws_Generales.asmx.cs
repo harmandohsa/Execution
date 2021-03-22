@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -20,6 +19,9 @@ namespace Execution.WebServices
     [System.Web.Script.Services.ScriptService]
     public class Ws_Generales : System.Web.Services.WebService
     {
+
+        SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["ConexionSql"]);
+        DataSet ds = new DataSet();
 
         [WebMethod]
         public string GeneraClave()
@@ -89,9 +91,10 @@ namespace Execution.WebServices
         [WebMethod]
         public void EnvioCorreoAdmin(string Asunto, string Mensaje, int ConAdjunto, string RutaAdjunto, string NombreArchivo)
         {
+
             try
             {
-                zstring Sitio = System.Configuration.ConfigurationManager.AppSettings["Sitio"].ToString();
+                string Sitio = System.Configuration.ConfigurationManager.AppSettings["Sitio"].ToString();
                 System.Net.Mail.MailMessage Correo = new System.Net.Mail.MailMessage();
                 Correo.From = new System.Net.Mail.MailAddress(System.Configuration.ConfigurationManager.AppSettings["Cuenta"], "Video tutoriales Execution");
                 Correo.To.Add(System.Configuration.ConfigurationManager.AppSettings["CuentaDestino"].ToString());
@@ -122,6 +125,161 @@ namespace Execution.WebServices
             {
                 string Err = ex.Message;
             }
+        }
+
+        [WebMethod]
+        public void EnvioCorreo(string Mail,string Nombre, string Asunto, string Mensaje, int ConAdjunto, string RutaAdjunto, string NombreArchivo)
+        {
+
+            try
+            {
+                string Sitio = System.Configuration.ConfigurationManager.AppSettings["Sitio"].ToString();
+                System.Net.Mail.MailMessage Correo = new System.Net.Mail.MailMessage();
+                Correo.From = new System.Net.Mail.MailAddress(System.Configuration.ConfigurationManager.AppSettings["Cuenta"], "Video tutoriales Execution");
+                Correo.To.Add(Mail);
+                Correo.Subject = Asunto;
+                string Saludo = "<table><tr><td>Estimado(a): Administrador</td></tr></table>";
+                string Notificacion = "<table><tr><td><b>NOTIFICACIÓ ELECTRÓNICA, DEL ADMINISTRADOR DEL SISTEMA</b></td></tr></table>";
+                Mensaje = Notificacion + Saludo + Mensaje + "<table><tr><td>Ingrese al sistema por medio del siguiente enlace: " + Sitio + " para revisar la información</td></tr><tr><td></td></tr><tr><td><b>Execution</b></td><tr><td></td></tr><tr><td> <font color=#FF0000>Por favor no responda este correo.</font></td></tr></table>";
+                AlternateView HTMLConImagenes = default(AlternateView);
+                HTMLConImagenes = AlternateView.CreateAlternateViewFromString(Mensaje, null, "text/html");
+
+                Correo.IsBodyHtml = true;
+                if (ConAdjunto == 1)
+                {
+                    Attachment File = new Attachment(RutaAdjunto);
+                    File.Name = NombreArchivo;
+                    Correo.Attachments.Add(File);
+                }
+                Correo.AlternateViews.Add(HTMLConImagenes);
+                Correo.Priority = System.Net.Mail.MailPriority.High;
+                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(System.Configuration.ConfigurationManager.AppSettings["Host"].ToString(), Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["Puerto"]));
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new System.Net.NetworkCredential(System.Configuration.ConfigurationManager.AppSettings["Cuenta"], System.Configuration.ConfigurationManager.AppSettings["Clave"]);
+
+                smtp.Send(Correo);
+            }
+            catch (Exception ex)
+            {
+                string Err = ex.Message;
+            }
+        }
+
+        [WebMethod]
+        public int CuantosVideos()
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_CuantosGetVideos", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Cuantos", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Cuantos"].Value);
+                cn.Close();
+
+                return Respuesta;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+
+        }
+
+        [WebMethod]
+        public int CuantosVideosVistos()
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_CuantasVistasVideos", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Cuantos", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Cuantos"].Value);
+                cn.Close();
+
+                return Respuesta;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+
+        }
+
+
+        [WebMethod]
+        public int CuantosUsuarios()
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_CuantosUsuarios", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Cuantos", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Cuantos"].Value);
+                cn.Close();
+
+                return Respuesta;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+
+        }
+
+        [WebMethod]
+        public int CuantosLikes()
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_CuantosLikes", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Cuantos", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Cuantos"].Value);
+                cn.Close();
+
+                return Respuesta;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+
+        }
+
+        [WebMethod]
+        public int CuantosComentarios()
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand Comando = new SqlCommand("Sp_CuantosComentario", cn);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@Cuantos", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                Comando.ExecuteNonQuery();
+                int Respuesta = Convert.ToInt32(Comando.Parameters["@Cuantos"].Value);
+                cn.Close();
+
+                return Respuesta;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+
         }
     }
 }
